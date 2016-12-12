@@ -15,7 +15,6 @@ def plot_decision_boundary(mlp, X, Y):
     plt.xlim(xx.min(), xx.max());
     plt.ylim(yy.min(), yy.max());
  
-        
 def plot_data(x,y):
     colormap = np.array(['r', 'k'])
     plt.scatter(x[:,0], x[:,1], c=colormap[y.astype(int)], s=50);
@@ -26,7 +25,6 @@ def plot_ds(X_train, X_test, y_train, y_test):
     y_min, y_max = X_train[:, 1].min() - .5, X_train[:, 1].max() + .5
     xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
                          np.arange(y_min, y_max, h))
-    cm = plt.cm.RdBu
     cm_bright = ListedColormap(['#FF0000', '#0000FF'])
     plt.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap=cm_bright);
     plt.scatter(X_test[:, 0], X_test[:, 1], c=y_test, cmap=cm_bright, alpha=0.6);
