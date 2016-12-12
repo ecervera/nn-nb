@@ -8,7 +8,7 @@ Examples with [scikit-learn](http://scikit-learn.org/stable/)
 ## Prerequisites
 
 * Python 2.7.x
-* Jupyter notebook
+* [Jupyter notebook](http://jupyter.readthedocs.io/en/latest/install.html)
 * [scikit-learn](http://scikit-learn.org/stable/install.html#installing-the-latest-release)
 
 ## Usage
