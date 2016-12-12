@@ -9,6 +9,7 @@ Examples with [scikit-learn](http://scikit-learn.org/stable/)
 
 * Python 2.7.x
 * Jupyter notebook
+* [scikit-learn](http://scikit-learn.org/stable/install.html#installing-the-latest-release)
 
 ## Usage
 
