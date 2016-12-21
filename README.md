@@ -21,6 +21,7 @@ We recommend using Miniconda and creating an environment:
 * `source activate py27`
 * `conda install scikit-learn`
 * `conda install jupyter`
+* `conda install matplotlib pil`
 
 ### Packages for Deep Learning
 
