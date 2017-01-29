@@ -41,3 +41,35 @@ def readTrafficSigns(rootpath, classes, tracks):
                 filenames.append(filename)
         gtFile.close()
     return images, dims, ROIs, labels, filenames
+
+from scipy.misc import imresize
+from numpy import histogram, interp
+
+def histeq(im,nbr_bins=256):
+    imhist, bins = histogram(im.flatten(),nbr_bins,normed=True)
+    cdf = imhist.cumsum() #cumulative distribution function
+    cdf = 255 * cdf / cdf[-1] #normalize
+    im2 = interp(im.flatten(),bins[:-1],cdf)
+    return im2.reshape(im.shape), cdf 
+
+def processImage(img, roi, dx=20, dy=20):
+    crop_img = img[roi[0][0]:roi[1][0],roi[0][1]:roi[1][1],:]
+    planes = crop_img.shape[2]
+    sc_img = imresize(crop_img,(dx, dy, planes))
+    R_img = sc_img[:,:,0]
+    eq_img, cdf = histeq(R_img)
+    return (eq_img-128)/256
+
+def plotTrafficSign(img, roi, dx=20, dy=20):
+    crop_img = img[roi[0][0]:roi[1][0],roi[0][1]:roi[1][1],:]
+    sc_img = imresize(crop_img, (dx,dy,3))
+    R_img = sc_img[:,:,0]
+    eq_img, cdf = histeq(R_img)
+    norm_img = 2*(eq_img - 128) / 256
+
+    plt.subplot(231), plt.imshow(img), plt.axis('off'), plt.title('Original')
+    plt.subplot(232), plt.imshow(crop_img), plt.axis('off'), plt.title('Cropped')
+    plt.subplot(233), plt.imshow(sc_img), plt.axis('off'), plt.title('Scaled')
+    plt.subplot(234), plt.imshow(R_img, cmap='gray'), plt.axis('off'), plt.title('Red channel')
+    plt.subplot(235), plt.imshow(eq_img, cmap='gray'), plt.axis('off'), plt.title('Equalized')
+    plt.subplot(236), plt.imshow(norm_img, cmap='gray'), plt.axis('off'), plt.title('Normalized');
