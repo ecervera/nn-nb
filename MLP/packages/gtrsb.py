@@ -33,7 +33,8 @@ def readTrafficSigns(rootpath, classes, tracks):
         # loop over all images in current annotations file
         for row in gtReader:
             filename = row[0]
-            if tracks[c]== int(filename[0:5]):
+            #if tracks[c] == int(filename[0:5]):
+            if int(filename[0:5]) in tracks[c]:
                 images.append(plt.imread(prefix + filename)) # the 1th column is the filename
                 dims.append((int(row[1]),int(row[2])))
                 ROIs.append(((int(row[3]),int(row[4])),(int(row[5]),int(row[6]))))
