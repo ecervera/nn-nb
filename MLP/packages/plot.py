@@ -14,7 +14,7 @@ def plot_decision_boundary(mlp, X, Y):
     plt.pcolormesh(xx, yy, Z, cmap=plt.cm.Paired);
     plt.xlim(xx.min(), xx.max());
     plt.ylim(yy.min(), yy.max());
- 
+
 def plot_data(x,y):
     colormap = np.array(['r', 'k'])
     plt.scatter(x[:,0], x[:,1], c=colormap[y.astype(int)], s=50);
