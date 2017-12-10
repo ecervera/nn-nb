@@ -1,7 +1,0 @@
-dependencies:
-  - python=2.6
-  - numpy
-  - matplotlib
-  - scikit-learn
-  - scipy
-  - pil
