@@ -1,3 +1,4 @@
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/ecervera/nn-nb/master?filepath=index.ipynb)
 # Neural Networks Notebooks
 
 Examples and exercises with [scikit-learn](http://scikit-learn.org/stable/) and [keras](https://keras.io).
